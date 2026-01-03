@@ -44,31 +44,31 @@ http://localhost:3000
 
 The project utilizes redux toolkit to manage global states between components. The redux store is used as the access point to all the slices in the project. Slices hold the states of certain components.
 There are 4 slices created for this project:
-	- Filter Slice:
-		- stores and updates selected tags -> accessed by the "filtration.tsx" to dispatch updating selected tags that are used in "selector.ts" to apply the filtration
-		- stores and updates selected user ID -> accessed by the "filtration.tsx" to dispatch updating selected user id that are used in "selector.ts" to apply the filtration
-		- stores and updates inserted search query -> accessed by "filtration.tsx" to update the text and "post.tsx" to apply highlighting features on text that matches the query.
-	- Page Slice:
-		- stores and updates the current live page -> accessed by "pagination.tsx" to listen to button clicks for "previous" and "next" buttons and update page state
-		- stores and updates the page size -> accessed by "pagination.tsx" to listen to changes done to the button
-	- Post Slice:
-		- stores the list of posts that have been fetched from dummyjson beforehand => I don't think this is ideal structure, however I did this to get global access to post list for potential use in comments page
-	- Sort Slice:
-		- stores state of the value it tracks for sorting -> accessed by "filtration.tsx" and "selector.ts" => I separated sortSlice from filterSlice for readability purposes
-		- stores state of the direction "asc" or "desc" of listing the data -> accessed by "filtration.tsx" and "selector.ts"
+- Filter Slice:
+	- stores and updates selected tags -> accessed by the "filtration.tsx" to dispatch updating selected tags that are used in "selector.ts" to apply the filtration
+	- stores and updates selected user ID -> accessed by the "filtration.tsx" to dispatch updating selected user id that are used in "selector.ts" to apply the filtration
+	- stores and updates inserted search query -> accessed by "filtration.tsx" to update the text and "post.tsx" to apply highlighting features on text that matches the query.
+- Page Slice:
+	- stores and updates the current live page -> accessed by "pagination.tsx" to listen to button clicks for "previous" and "next" buttons and update page state
+  	- stores and updates the page size -> accessed by "pagination.tsx" to listen to changes done to the button
+- Post Slice:
+	- stores the list of posts that have been fetched from dummyjson beforehand => I don't think this is ideal structure, however I did this to get global access to post list for potential use in comments page
+- Sort Slice:
+	- stores state of the value it tracks for sorting -> accessed by "filtration.tsx" and "selector.ts" => I separated sortSlice from filterSlice for readability purposes
+	- stores state of the direction "asc" or "desc" of listing the data -> accessed by "filtration.tsx" and "selector.ts"
 Created 5 types:
-	- Posts: to integrate json
-	- Page: used for pagination and pageSlice
-	- Filters: used for filtration and filterSlice
-	- Sort: used for sorting and sortSlice
-	- Comments: to intgerate json
+- Posts: to integrate json
+- Page: used for pagination and pageSlice
+- Filters: used for filtration and filterSlice
+- Sort: used for sorting and sortSlice
+- Comments: to intgerate json
 
 There are 2 page.tsx files, one for the PostPage and the second for CommentsPage, using "useRouter()" and "useParams()" to change between them.
 Components are separated to: 
-	- filtration: Holds the UI and data needed for filtration to work and dispatch
-	- pagination: Holds the UI and data needed for pagination to work and dispatch
-	- post: Holds the UI template for posts and has the functionality of highlighting text that comes from the search query
-	- sorting: Holds the UI and data needed for sorting to work and dispatch
+- filtration: Holds the UI and data needed for filtration to work and dispatch
+- pagination: Holds the UI and data needed for pagination to work and dispatch
+- post: Holds the UI template for posts and has the functionality of highlighting text that comes from the search query
+- sorting: Holds the UI and data needed for sorting to work and dispatch
 
 ## Improvement Points
 Here are the shortcomings in the features and some tradeoffs I had to do:
