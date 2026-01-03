@@ -1,10 +1,14 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import { clearPostID, setPostID } from './postSlice';
-import reducer from './postSlice';
+import pageReducer from './slices/pageSlice';
+import postReducer from './slices/postSlice';
+import filterReducer from './slices/filterSlice';
+import sortReducer from './slices/sortSlice';
 
 export const combinedReducers = combineReducers({
-  post: reducer,
-
+  page: pageReducer,
+  posts: postReducer,
+  filters: filterReducer,
+  sort: sortReducer
 });
 
 function setupStore(preloadedState?: Partial<RootState>) {
