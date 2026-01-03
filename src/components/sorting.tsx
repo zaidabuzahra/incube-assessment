@@ -2,7 +2,7 @@
 
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../app/redux-store/store";
-import { setSortBy, resetSort, toggleSortDirection} from "@/app/redux-store/slices/sortSlice";
+import { setSortBy, toggleSortDirection} from "@/app/redux-store/slices/sortSlice";
 
 export function SortPosts() {
     const {sortBy, sortOrder} = useSelector((state: RootState) => state.sort);
@@ -15,23 +15,34 @@ export function SortPosts() {
     }
 
     return(
-    <div className="flex gap-4 items-center">
-      <select className="flex flex-row border px-4 py-1 rounded cursor-pointer hover:bg-gray-800 click:bg-gray-800 text-white"
-        value={sortBy}
-        onChange={(e) => changeField(e.target.value)}
-      >
-        <option value="id">Id</option>
-        <option value="views">Views</option>
-        <option value="likes">Likes</option>
-        <option value="dislikes">Dislikes</option>
-      </select>
+      <div className="flex flex-wrap items-center gap-3 bg-white p-4 rounded-lg shadow-sm">
 
-      <button 
-        className="border px-4 py-2 rounded cursor-pointer hover:bg-gray-800"
-        onClick={() => dispatch(toggleSortDirection())}
-      >
-        {sortOrder === "asc" ? "↑ Asc" : "↓ Desc"}
-      </button>
-    </div>
+        {/* Sort field */}
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-600">Sort by:</span>
+
+          <select
+            value={sortBy}
+            onChange={(e) => changeField(e.target.value)}
+            className="border rounded-md px-3 py-1 text-sm text-black
+                      focus:outline-none focus:ring-2 focus:ring-blue-500"
+          >
+            <option value="id">ID</option>
+            <option value="views">Views</option>
+            <option value="likes">Likes</option>
+            <option value="dislikes">Dislikes</option>
+          </select>
+        </div>
+
+        {/* Sort direction */}
+        <button
+          onClick={() => dispatch(toggleSortDirection())}
+          className="px-3 py-1 rounded-md border text-sm text-black
+                    hover:bg-gray-100 transition"
+        >
+          {sortOrder === "asc" ? "↑ Ascending" : "↓ Descending"}
+        </button>
+
+      </div>
     )
 };

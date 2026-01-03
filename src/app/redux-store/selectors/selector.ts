@@ -19,10 +19,12 @@ export const selectFilteredPosts = (state: RootState) => {
         selectedUserId === null ||
         post.userId === selectedUserId;
         
+        // Check search query
         const searchMatch =
         normalizedQuery === "" ||
         post.title.toLowerCase().includes(normalizedQuery);
-    return tagMatch && userMatch && searchMatch;
+
+        return tagMatch && userMatch && searchMatch;
   });
   return sortPosts(filteredPosts, sortBy, sortOrder);
 };

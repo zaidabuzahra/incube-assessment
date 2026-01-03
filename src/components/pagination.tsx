@@ -15,23 +15,52 @@ export function Pagination(Props:{totalItems: number}) {
   const totalPages = Math.ceil(Props.totalItems / pageSize);
   
   return (
-    <div className="py-10">
-      <div className="flex flex-row gap-2 justify-center items-center w-full"> 
-        {page === 1 ? <button className="border px-1 py-2 rounded bg-gray-400">Previous Page</button> : <button className="border px-4 py-2 rounded cursor-pointer hover:bg-gray-800" onClick={() => dispatch(prevPage())}>Previous Page</button>}
-      <h1>Page: {page} of {totalPages}</h1>
-        {page >= totalPages ? <button className="border px-4 py-2 rounded bg-gray-400">Next Page</button> : <button className="border px-4 py-2 rounded cursor-pointer hover:bg-gray-800" onClick={() => dispatch(nextPage())}>Next Page</button>}
+    <div className="py-8 space-y-4">
+      {/* Page controls */}
+      <div className="flex items-center justify-center gap-4">
+        <button
+          disabled={page === 1}
+          onClick={() => dispatch(prevPage())}
+          className="px-4 py-2 rounded-md border text-sm
+                    bg:-white text-black
+                    disabled:bg-gray-200 disabled:text-gray-400
+                    hover:bg-gray-100 transition"
+        >
+          ← Previous
+        </button>
+
+        <span className="text-sm text-gray-600">
+          Page <b>{page}</b> of <b>{totalPages}</b>
+        </span>
+
+        <button
+          disabled={page >= totalPages}
+          onClick={() => dispatch(nextPage())}
+          className="px-4 py-2 rounded-md border text-sm
+                    bg-white text-black
+                    disabled:bg-gray-200 disabled:text-gray-400
+                    hover:bg-gray-100 transition"
+        >
+          Next →
+        </button>
       </div>
-      <div className="flex flex-row justify-center items-center w-full mt-4">
-        Page Size: 
-        <select className="flex flex-row border px-4 py-1 rounded cursor-pointer hover:bg-gray-800 click:bg-gray-800 text-white"
+
+      {/* Page size selector */}
+      <div className="flex items-center justify-center gap-2 text-sm text-gray-600">
+        <span>Page size:</span>
+
+        <select
           value={pageSize}
           onChange={(e) => dispatch(setPageSize(Number(e.target.value)))}
+          className="border rounded-md px-2 py-1
+                    focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
-          <option className="text-black" value={5}>5</option>
-          <option className="text-black" value={10}>10</option>
-          <option className="text-black" value={20}>20</option>
+          <option value={5}>5</option>
+          <option value={10}>10</option>
+          <option value={20}>20</option>
         </select>
       </div>
+
     </div>
   );
 }
