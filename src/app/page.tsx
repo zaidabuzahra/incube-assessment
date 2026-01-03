@@ -3,7 +3,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import Link from "next/link";
 import { Pagination } from "@/components/pagination";
 import { FilterPosts } from "@/components/filteration";
 import { setPosts } from "./redux-store/slices/postSlice";

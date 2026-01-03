@@ -22,10 +22,9 @@ export function SortPosts() {
           <span className="text-sm text-gray-600">Sort by:</span>
 
           <select
+            className="border rounded-md px-3 py-1 text-sm text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             value={sortBy}
             onChange={(e) => changeField(e.target.value)}
-            className="border rounded-md px-3 py-1 text-sm text-black
-                      focus:outline-none focus:ring-2 focus:ring-blue-500"
           >
             <option value="id">ID</option>
             <option value="views">Views</option>
@@ -36,9 +35,8 @@ export function SortPosts() {
 
         {/* Sort direction */}
         <button
+          className="px-3 py-1 rounded-md border text-sm text-black hover:bg-gray-100 transition"
           onClick={() => dispatch(toggleSortDirection())}
-          className="px-3 py-1 rounded-md border text-sm text-black
-                    hover:bg-gray-100 transition"
         >
           {sortOrder === "asc" ? "↑ Ascending" : "↓ Descending"}
         </button>

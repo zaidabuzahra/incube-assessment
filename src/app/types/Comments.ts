@@ -1,4 +1,4 @@
-export interface Comments{
+export type Comments = {
     id: number;
     body: string;
     postId: number;

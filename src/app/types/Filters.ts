@@ -1,4 +1,4 @@
-export interface Filters {
+export type Filters = {
     selectedTags: string[];
     selectedUserId: number | null;
     searchQuery: string;

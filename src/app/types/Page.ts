@@ -1,4 +1,4 @@
-export interface Page {
+export type Page = {
     page: number;
     pageSize: number;
 }

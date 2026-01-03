@@ -11,11 +11,6 @@ export const combinedReducers = combineReducers({
   sort: sortReducer
 });
 
-function setupStore(preloadedState?: Partial<RootState>) {
-  return configureStore({
-    reducer: combinedReducers
-  });
-}
 export const store = configureStore({
   reducer: combinedReducers
 });

@@ -14,6 +14,7 @@ export function FilterPosts(){
     const [users, setUsers] = useState<{ id: number; username: string }[]>([]);
     const { posts } = useSelector((state: RootState) => state.posts);
     const { selectedTags, selectedUserId, searchQuery } = useSelector((state: RootState) => state.filters);
+    
     useEffect(() => {
             async function fetchProducts() {
                 const request = await fetch("https://dummyjson.com/users");
@@ -60,8 +61,7 @@ export function FilterPosts(){
             placeholder="Search post titles..."
             value={searchQuery}
             onChange={(e) => updateSearchQuery(e.target.value)}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-black
-                        focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
         </div>
 
@@ -78,8 +78,7 @@ export function FilterPosts(){
             dispatch(setSelectedUserId(value ? Number(value) : null));
             dispatch(resetPage());
             }}
-            className="w-full border border-gray-300 rounded-md px-3 py-2 text-black
-                    focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full border border-gray-300 rounded-md px-3 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
             <option value="">All users</option>
 

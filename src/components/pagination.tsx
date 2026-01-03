@@ -19,12 +19,9 @@ export function Pagination(Props:{totalItems: number}) {
       {/* Page controls */}
       <div className="flex items-center justify-center gap-4">
         <button
+          className="px-4 py-2 rounded-md border text-sm bg:-white text-black disabled:bg-gray-200 disabled:text-gray-400 hover:bg-gray-100 transition"
           disabled={page === 1}
           onClick={() => dispatch(prevPage())}
-          className="px-4 py-2 rounded-md border text-sm
-                    bg:-white text-black
-                    disabled:bg-gray-200 disabled:text-gray-400
-                    hover:bg-gray-100 transition"
         >
           ← Previous
         </button>
@@ -34,12 +31,9 @@ export function Pagination(Props:{totalItems: number}) {
         </span>
 
         <button
+          className="px-4 py-2 rounded-md border text-sm bg-white text-black disabled:bg-gray-200 disabled:text-gray-400 hover:bg-gray-100 transition"
           disabled={page >= totalPages}
           onClick={() => dispatch(nextPage())}
-          className="px-4 py-2 rounded-md border text-sm
-                    bg-white text-black
-                    disabled:bg-gray-200 disabled:text-gray-400
-                    hover:bg-gray-100 transition"
         >
           Next →
         </button>
@@ -50,10 +44,9 @@ export function Pagination(Props:{totalItems: number}) {
         <span>Page size:</span>
 
         <select
+          className="border rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
           value={pageSize}
           onChange={(e) => dispatch(setPageSize(Number(e.target.value)))}
-          className="border rounded-md px-2 py-1
-                    focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value={5}>5</option>
           <option value={10}>10</option>
